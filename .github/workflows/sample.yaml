@@ -2,8 +2,12 @@ name: Openshift connection
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
+    tags: ['*']
+  pull_request:
+    branches: [main]
+  merge_group:
+    types: [checks_requested]
 jobs:
   deploy:
     runs-on: official-aiu-x86-64-arc-runner-set-v3
