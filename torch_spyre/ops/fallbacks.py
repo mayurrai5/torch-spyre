@@ -274,6 +274,11 @@ def spyre__triu(input, diagonal=0, **kwargs):
     return torch.triu(input, diagonal, **kwargs)
 
 
-@register_fallback([aten.slice.Tensor])
-def spyre__slice(self, dim=0, start=None, end=None, step=1):
-    return torch.ops.aten.slice(self, dim, start, end, step)
+@register_fallback([aten.bitwise_xor.Tensor, aten.bitwise_xor.Tensor_out])
+def spyre__bitwise_xor(input1, input2, **kwargs):
+    return torch.bitwise_xor(input1, input2, **kwargs)
+
+
+@register_fallback([aten.bitwise_or.Tensor, aten.bitwise_or.Tensor_out])
+def spyre__bitwise_or(input1, input2, **kwargs):
+    return torch.bitwise_or(input1, input2, **kwargs)
