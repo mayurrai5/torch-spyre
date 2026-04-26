@@ -11,13 +11,20 @@ spec:
   strategy:
     type: Docker
     dockerStrategy:
+      pullSecret:
+        name: icr-us
       dockerfilePath: Dockerfile
       noCache: true
 
   output:
     to:
       kind: DockerImage
-      name: us.icr.io/github-actions-runners/torch-spyre:latest
-
+      name: icr.io/ai_sw_accel/mayurtorch-spyre:latest
+    pushSecret:
+      name: icr-global
+  
   triggers:
     - type: ConfigChange
+  
+  # ADD THIS:
+  completionDeadlineSeconds: 3600  # 1 hour timeoutoc get bc torch-spyre-build -o yaml | grep -A3 pushSecret
