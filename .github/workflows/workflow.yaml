@@ -24,6 +24,11 @@ jobs:
           echo "OC_SERVER=$OC_SERVER"
           echo "OC_NAMESPACE=$OC_NAMESPACE"
           echo "TOKEN length=${#OC_TOKEN}"
+      - name: Login to OpenShift
+        run: |
+          oc login "$OC_SERVER" \
+          --token="$OC_TOKEN" \
+          --insecure-skip-tls-verify=true
       
       - name: Apply BuildConfig
         env:
