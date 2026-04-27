@@ -14,7 +14,7 @@ spec:
     type: Docker
     dockerStrategy:
       pullSecret:
-        name: icr-us
+        name: icr-global
       dockerfilePath: Dockerfile
       noCache: true
 
