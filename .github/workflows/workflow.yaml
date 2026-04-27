@@ -16,6 +16,10 @@ jobs:
           chmod +x scripts/preflight.sh
           ./scripts/preflight.sh
       - name: Debug env
+        env:
+          OC_SERVER: ${{ secrets.OC_SERVER }}
+          OC_TOKEN: ${{ secrets.OC_TOKEN }}
+          OC_NAMESPACE: ${{ secrets.OC_NAMESPACE }}
         run: |
           echo "OC_SERVER=$OC_SERVER"
           echo "OC_NAMESPACE=$OC_NAMESPACE"
