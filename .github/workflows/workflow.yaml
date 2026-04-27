@@ -16,11 +16,12 @@ jobs:
           ./scripts/preflight.sh
       - name: Apply BuildConfig
         run: |
-          oc --server=$OC_SERVER \
-          --token=$OC_TOKEN \
-          --insecure-skip-tls-verify=true \
-          -n $OC_NAMESPACE \
-          apply -f torch-spyre/buildconfig.yaml
+          oc \
+            --server=$OC_SERVER \
+            --token=$OC_TOKEN \
+            --insecure-skip-tls-verify=true \
+            -n $OC_NAMESPACE \
+            apply -f torch-spyre/buildconfig.yaml
       - name: Trigger BuildConfig
         run: |
           oc --server=$OC_SERVER \
