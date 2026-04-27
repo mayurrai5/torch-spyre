@@ -5,8 +5,10 @@ metadata:
   namespace: github-actions-runners
 spec:
   source:
-    type: Binary
-    binary: {}
+    type: Git
+    git:
+      uri: https://github.com/mayurrai5/torch-spyre.git
+      ref: dev
 
   strategy:
     type: Docker
