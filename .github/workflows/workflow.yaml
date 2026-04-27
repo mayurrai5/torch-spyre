@@ -15,6 +15,11 @@ jobs:
         run: |
           chmod +x scripts/preflight.sh
           ./scripts/preflight.sh
+      - name: Debug env
+        run: |
+          echo "OC_SERVER=$OC_SERVER"
+          echo "OC_NAMESPACE=$OC_NAMESPACE"
+          echo "TOKEN length=${#OC_TOKEN}"
       
       - name: Apply BuildConfig
         env:
