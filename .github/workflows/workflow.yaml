@@ -11,7 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install OpenShift CLI
-        if: steps.cache-oc.outputs.cache-hit != 'true'
         run: |
           chmod +x scripts/preflight.sh
           ./scripts/preflight.sh
