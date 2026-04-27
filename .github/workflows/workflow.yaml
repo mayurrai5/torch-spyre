@@ -25,6 +25,9 @@ jobs:
           echo "OC_NAMESPACE=$OC_NAMESPACE"
           echo "TOKEN length=${#OC_TOKEN}"
       - name: Login to OpenShift
+        env:
+          OC_SERVER: ${{ secrets.OC_SERVER }}
+          OC_TOKEN: ${{ secrets.OC_TOKEN }}
         run: |
           oc login "$OC_SERVER" \
           --token="$OC_TOKEN" \
