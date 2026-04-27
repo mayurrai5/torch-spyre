@@ -21,7 +21,12 @@ jobs:
           OC_SERVER: ${{ secrets.OC_SERVER }}
           OC_TOKEN: ${{ secrets.OC_TOKEN }}
           OC_NAMESPACE: ${{ secrets.OC_NAMESPACE }}
-        run: oc apply -f buildconfig.yaml --server=$OC_SERVER --token=$OC_TOKEN --insecure-skip-tls-verify=true -n $OC_NAMESPACE
+        run: |
+          oc --server="$OC_SERVER" \
+             --token="$OC_TOKEN" \
+             --insecure-skip-tls-verify=true \
+             -n "$OC_NAMESPACE" \
+             apply -f buildconfig.yaml
       
       - name: Trigger BuildConfig
         env:
