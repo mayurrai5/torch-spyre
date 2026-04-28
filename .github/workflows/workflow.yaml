@@ -43,7 +43,7 @@ jobs:
              --token="$OC_TOKEN" \
              --insecure-skip-tls-verify=true \
              -n "$OC_NAMESPACE" \
-             apply -f buildconfig.yaml
+             apply -f buildconfig.yaml 
       
       - name: Trigger BuildConfig
         env:
