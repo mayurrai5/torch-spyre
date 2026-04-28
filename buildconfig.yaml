@@ -21,7 +21,7 @@ spec:
   output:
     to:
       kind: DockerImage
-      name: icr.io/ai_sw_accel/mayurtorch-spyre:latest
+      name: icr.io/ai_sw_accel/amd64/mayurtorch-spyre:latest
     pushSecret:
       name: icr-global
   
