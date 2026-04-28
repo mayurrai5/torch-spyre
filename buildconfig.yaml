@@ -2,7 +2,7 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   name: torch-spyre-build
-  namespace: github-actions-runners
+  #namespace: github-actions-runners
 spec:
   source:
     type: Git
