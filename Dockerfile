@@ -1,4 +1,4 @@
-FROM icr.io/ai_sw_accel/gnanesh-c/torch-aiu-runtime-dev:latest
+FROM 
 USER root
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 RUN cd "$HOME" && \
