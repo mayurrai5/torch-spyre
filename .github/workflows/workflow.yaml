@@ -52,23 +52,4 @@ jobs:
           OC_TOKEN: ${{ secrets.OC_TOKEN }}
           OC_NAMESPACE: ${{ secrets.OC_NAMESPACE }}
         run: oc start-build torch-spyre-build --wait --follow --server=$OC_SERVER --token=$OC_TOKEN --insecure-skip-tls-verify=true -n $OC_NAMESPACE
-  docker-build-push:
-    name: Build & Push Image (s390x)
-    runs-on: [self-hosted, Linux, S390X]
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-      - name: Login to ICR
-        env:
-          ICR_API_KEY: ${{ secrets.ICR_API_KEY }}
-          run: |
-            echo "${{ secrets.ICR_API_KEY }}" | docker login -u iamapikey --password-stdin icr.io
-      - name: Build image
-        run: |
-          podman build \
-            -t icr.io/ai_sw_accel/s390x/mayurtorch-spyre:${{ github.sha }} \
-            -t icr.io/ai_sw_accel/s390x/mayurtorch-spyre:latest \
-      - name: Push image
-        run: |
-          docker push icr.io/ai_sw_accel/s390x/mayurtorch-spyre:${{ github.sha }}
-          docker push icr.io/ai_sw_accel/s390x/mayurtorch-spyre:latest
+  
